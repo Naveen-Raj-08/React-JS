@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {addTodo, completeTodo, removeTodo} from "../redux/todoSlice";
 
 export const Todo = () => {
-  const [Todo, setTodo] = useState();
+  const [Todo, setTodo] = useState("");
   // const [Todos, setTodos] = useState();
   // const [UpdateTodo, setUpdateTodo] = useState("");
   // const [isEdit, setIsEdit] = useState(false);
