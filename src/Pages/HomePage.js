@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
+import {Todo} from "./Todo";
 
 export const HomePage = () => {
   const [Load, setLoad] = useState(false);
@@ -15,41 +16,38 @@ export const HomePage = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row m-0 my-5 align-items-center">
-        <div className="col-md-3 text-center">
-          <Link
-            className="text-capitalize text-decoration-none text-black"
-            to="/comic"
-          >
-            Comic API
-          </Link>
-        </div>
-        <div className="col-md-3 text-center">
-          <Link
-            className="text-capitalize text-decoration-none text-black"
-            to="/dailylist"
-          >
-            Todo
-          </Link>
-        </div>
-        <div className="col-md-3 text-center">
-          <Link
-            className="text-capitalize text-decoration-none text-black"
-            to="/file-upload"
-          >
-            Upload and display
-          </Link>
-        </div>
-        <div className="col-md-3 text-center">
-          <button className="btn btn-danger" onClick={handleLogout}>
-            Logout
-            {Load === true ? (
-              <span className="spinner-border mx-2 spinner-border-sm"></span>
-            ) : null}
-          </button>
+    <>
+      <title>Home Page</title>
+      <div className="container">
+        <div className="row m-0 my-5 align-items-center">
+          <div className="col-md-3 text-center">
+            <Link
+              className="text-capitalize text-decoration-none text-black"
+              to="/comic"
+            >
+              Comic API
+            </Link>
+          </div>
+          <div className="col-md-3 text-center">
+            <Link
+              className="text-capitalize text-decoration-none text-black"
+              to="/file-upload"
+            >
+              Upload and display
+            </Link>
+          </div>
+          <div className="col-md-3 text-center">
+            <button className="btn btn-danger" onClick={handleLogout}>
+              Logout
+              {Load === true ? (
+                <span className="spinner-border mx-2 spinner-border-sm"></span>
+              ) : null}
+            </button>
+          </div>
         </div>
       </div>
-    </div>
+
+      <Todo />
+    </>
   );
 };

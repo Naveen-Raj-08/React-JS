@@ -65,17 +65,21 @@ export const Home = () => {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        {!ComicData ? <span className="spinner-border"></span> : comicResult}
+    <>
+      <title>Comics List Page</title>
 
-        <button
-          className="btn btn-primary load-more mb-5"
-          onClick={handleLoadMore}
-        >
-          Load More
-        </button>
+      <div className="container">
+        <div className="row">
+          {!ComicData ? <span className="spinner-border"></span> : comicResult}
+
+          <button
+            className="btn btn-primary load-more mb-5"
+            onClick={handleLoadMore}
+          >
+            Load More
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };

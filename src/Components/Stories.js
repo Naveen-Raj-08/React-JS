@@ -84,10 +84,13 @@ export const Stories = (props) => {
     ));
 
   return (
-    <div className="container stories-wrapper">
-      <div className="row">
-        {!Comic ? <span className="spinner-border"></span> : comicStory}
+    <>
+      <title>Comic Stories Page</title>
+      <div className="container stories-wrapper">
+        <div className="row">
+          {!Comic ? <span className="spinner-border"></span> : comicStory}
+        </div>
       </div>
-    </div>
+    </>
   );
 };

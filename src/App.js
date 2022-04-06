@@ -23,9 +23,6 @@ function App() {
         <Route path="/comic" element={<ProtectedRoute />}>
           <Route path="/comic" element={<Home />} />
         </Route>
-        <Route path="/dailylist" element={<ProtectedRoute />}>
-          <Route path="/dailylist" element={<Todo />} />
-        </Route>
         <Route path="/comic/stories" element={<ProtectedRoute />}>
           <Route path="/comic/stories" element={<Stories />} />
         </Route>
