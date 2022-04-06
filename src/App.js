@@ -3,34 +3,56 @@ import "./Sass/style.scss";
 import {Navigate, Outlet, Route, Routes} from "react-router-dom";
 import {Signup} from "./Components/Signup";
 import {Login} from "./Components/Login";
-import {Home} from "./Components/Home";
 import {Stories} from "./Components/Stories";
-import {Pagination} from "./Components/Pagination";
-import {Todo} from "./Pages/Todo";
 import {HomePage} from "./Pages/HomePage";
+import {Todo} from "./Pages/Todo";
+import React, {useEffect, useState} from "react";
+import {Home} from "./Components/Home";
+import {NoRoute} from "./Components/NoRoute";
 
 function App() {
   return (
-    <>
+    <div className="container my-3">
       <Routes>
-        <Route exact path="/" element={<Todo />} />
-        <Route exact path="/home" element={<HomePage />} />
-        <Route exact path="/stories" element={<Stories />} />
         <Route exact path="/signup" element={<Signup />} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/todo" element={<Todo />} />
+        <Route exact path="*" element={<NoRoute />} />
+        <Route path="/" element={<ProtectedRoute />}>
+          <Route path="/" element={<HomePage />} />
+        </Route>
+        <Route path="/comic" element={<ProtectedRoute />}>
+          <Route path="/comic" element={<Home />} />
+        </Route>
+        <Route path="/todo" element={<ProtectedRoute />}>
+          <Route path="/todo" element={<Todo />} />
+        </Route>
+        <Route path="/comic/stories" element={<ProtectedRoute />}>
+          <Route path="/comic/stories" element={<Stories />} />
+        </Route>
       </Routes>
-    </>
+    </div>
   );
 }
 
-const ProtectedRoute = () => {
-  let isAuth = localStorage.getItem("isAuth");
-  if (isAuth === true) {
-    return <Outlet />;
+const useAuth = () => {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    const isAuth = localStorage.getItem("isAuth");
+    setUser(isAuth);
+  }, [user]);
+
+  console.log(user);
+  if (user === null) {
+    return false;
   } else {
-    return <Navigate to="/login" />;
+    return true;
   }
 };
 
+const ProtectedRoute = () => {
+  const auth = useAuth();
+
+  return auth === false ? <Navigate to="/login" /> : <Outlet />;
+};
 export default App;

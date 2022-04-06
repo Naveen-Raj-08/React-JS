@@ -1,13 +1,13 @@
 import {getDocs, collection} from "firebase/firestore";
 import React, {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import db from "./firebase";
 
 export const Login = () => {
   const [User, setUser] = useState("");
   const [UserPassword, setUserPassword] = useState("");
   const [RegisteredUser, setRegisteredUser] = useState();
-
+  const [Load, setLoad] = useState(false);
   const [NullError, setNullError] = useState(false);
   const [Error, setError] = useState(false);
 
@@ -64,10 +64,12 @@ export const Login = () => {
       } else {
         setError(false);
         if (User === Usermail && UserPassword === Userpassword) {
+          setLoad(true);
           setTimeout(() => {
             navigateTo("/");
-            localStorage.setItem("isAuth", true);
+            localStorage.setItem("isAuth", "you're authenticated now");
             e.target.reset();
+            setLoad(false);
           }, 1200);
         } else {
           setError(true);
@@ -98,8 +100,16 @@ export const Login = () => {
             />
           </div>
           <button className="btn btn-primary" type="submit">
-            Login
+            Login{" "}
+            {Load === true ? (
+              <span className="spinner-border text-white mx-2 spinner-border-sm"></span>
+            ) : null}
           </button>
+          {localStorage.getItem("user") ? null : (
+            <Link className="mx-3 text-decoration-none text-black" to="/signup">
+              Signup
+            </Link>
+          )}
         </form>
       </div>
     </>

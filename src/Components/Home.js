@@ -36,9 +36,9 @@ export const Home = () => {
       <div className="col-md-3 mb-4 " key={index}>
         {
           <a
-            href={"/stories"}
+            href={"/comic/stories"}
             onClick={() => {
-              navigate("/stories", {
+              navigate("/comic/stories", {
                 state: list.resourceURI,
               });
             }}

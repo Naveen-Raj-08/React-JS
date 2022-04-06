@@ -75,7 +75,7 @@ export const Signup = () => {
                 Userpassword: Password,
                 Userconfirmpassword: ConfirmPassword,
               };
-              toast.success("🦄 Successfully created user!", {
+              toast.success("Successfully created user!", {
                 position: "bottom-left",
                 autoClose: 10000,
                 hideProgressBar: true,
@@ -95,8 +95,6 @@ export const Signup = () => {
                 // }
 
                 localStorage.setItem("user", JSON.stringify(userData));
-                localStorage.setItem("isAuth", false);
-
                 e.target.reset();
                 console.log("Succssfully created account");
                 navigate("/login");

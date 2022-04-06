@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useLocation, useNavigate} from "react-router-dom";
 
 export const Stories = (props) => {
   const [Comic, setComic] = useState();
@@ -17,7 +17,7 @@ export const Stories = (props) => {
         .get(`${location.state}?ts=${TS}&apikey=${API_KEY}&hash=${MD5_HASH}`)
         .then((res) => {
           let story = res.data;
-          const { results } = story.data;
+          const {results} = story.data;
           setComic(results);
         })
         .catch((err) => console.log(err));
@@ -37,7 +37,7 @@ export const Stories = (props) => {
             <img
               width="100%"
               src={`${list.thumbnail.path}.${list.thumbnail.extension}`}
-              alt="Image"
+              alt={list.thumbnail.path}
             />
           }
         </div>
@@ -68,9 +68,11 @@ export const Stories = (props) => {
             <div className="col-sm-4">
               <a
                 className="text-secondary text-decoration-none"
-                href="/series"
+                href="/comic/stories/series"
                 onClick={() =>
-                  navigate("/series", { state: list.series.resourceURI })
+                  navigate("/comic/stories/series", {
+                    state: list.series.resourceURI,
+                  })
                 }
               >
                 <h4 className="series-title ">{list.series.name}</h4>
