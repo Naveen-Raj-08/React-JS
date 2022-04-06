@@ -47,7 +47,7 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <Todo />
+      {/* <Todo /> */}
     </>
   );
 };
