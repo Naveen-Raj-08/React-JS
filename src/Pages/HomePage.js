@@ -28,7 +28,7 @@ export const HomePage = () => {
         <div className="col-md-3 text-center">
           <Link
             className="text-capitalize text-decoration-none text-black"
-            to="/todo"
+            to="/dailylist"
           >
             Todo
           </Link>

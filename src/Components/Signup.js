@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import db from "./firebase";
-import {collection, addDoc} from "firebase/firestore";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -13,6 +11,7 @@ export const Signup = () => {
   const [ConfirmPassword, setConfirmPassword] = useState("");
   const [Error, setError] = useState(false);
   const [NullError, setNullError] = useState(false);
+  const [Load, setLoad] = useState(false);
 
   var phoneVal = /^\d{10}$/;
   var emailVal =
@@ -75,6 +74,7 @@ export const Signup = () => {
                 Userpassword: Password,
                 Userconfirmpassword: ConfirmPassword,
               };
+              setLoad(true);
               toast.success("Successfully created user!", {
                 position: "bottom-left",
                 autoClose: 10000,
@@ -98,6 +98,7 @@ export const Signup = () => {
                 e.target.reset();
                 console.log("Succssfully created account");
                 navigate("/login");
+                setLoad(false);
 
                 console.log(userData);
               }, 2000);
@@ -199,6 +200,9 @@ export const Signup = () => {
 
           <button className="btn btn-primary" type="submit">
             Signup
+            {Load === true ? (
+              <span className="spinner-border text-white mx-2 spinner-border-sm"></span>
+            ) : null}
           </button>
         </form>
         <ToastContainer />
