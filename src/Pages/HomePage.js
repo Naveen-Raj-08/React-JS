@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react/cjs/react.development";
 import { Todo } from "./Todo";
 
 export const HomePage = () => {
@@ -58,9 +57,9 @@ export const HomePage = () => {
           <div className="col-md-3 text-center">
             <Link
               className="text-capitalize text-decoration-none text-black"
-              to="/file-upload"
+              to="/m2catalog"
             >
-              Upload and display
+              Catalog
             </Link>
           </div>
           <div className="col-md-3 text-center">

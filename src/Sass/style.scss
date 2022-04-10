@@ -19,6 +19,20 @@ body {
   animation: loading 0.3s linear alternate;
 }
 
+.product-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card {
+  span {
+    font-family: "Nunito";
+    font-weight: 900;
+  }
+}
+
 .weather-app {
   min-height: 100vh;
   .app-wrap {

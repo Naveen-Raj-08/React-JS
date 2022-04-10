@@ -9,6 +9,8 @@ import {Todo} from "./Pages/Todo";
 import React, {useEffect, useState} from "react";
 import {Home} from "./Components/Home";
 import {NoRoute} from "./Components/NoRoute";
+import {Catalog} from "./Pages/Catalog";
+import {Details} from "./Components/Details";
 
 function App() {
   return (
@@ -23,6 +25,10 @@ function App() {
         <Route path="/comic" element={<ProtectedRoute />}>
           <Route path="/comic" element={<Home />} />
         </Route>
+        <Route path="/m2catalog" element={<ProtectedRoute />}>
+          <Route path="/m2catalog" element={<Catalog />} />
+        </Route>
+        <Route path="/product-details" element={<Details />} />
         <Route path="/comic/stories" element={<ProtectedRoute />}>
           <Route path="/comic/stories" element={<Stories />} />
         </Route>
